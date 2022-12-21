@@ -66,8 +66,8 @@ int main()
         if(arr[idx].burst_remaining==arr[idx].brust_time)
         {
             arr[idx].start_time=max(current_time,arr[idx].arrival_time);
-            current_time=arr[idx].start_time;
             total_idle_time+=arr[idx].start_time-current_time;
+            current_time=arr[idx].start_time;
         }
         if(arr[idx].burst_remaining-tq > 0) {
             arr[idx].burst_remaining -= tq;
@@ -90,7 +90,7 @@ int main()
         }
         for(int i=0;i<n;i++)
         {
-            if(arr[i].burst_remaining==0&&arr[i].arrival_time<=current_time&& mark[i]==0)
+            if(arr[i].burst_remaining>0&&arr[i].arrival_time<=current_time&& mark[i]==0)
             {
                 q.push(i);
                 mark[i]=1;
